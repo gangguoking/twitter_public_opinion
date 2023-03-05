@@ -56,11 +56,13 @@ class TwitterSpider(scrapy.Spider):
 
         # twitter comments
         for row in speech_list:
+            created_at = row['content']['itemContent']['tweet_results']['result']['legacy']['created_at']
             try:
                 if 'tweet' in row['content']['itemContent']['tweet_results']['result']:
-                    logging.info(row['content']['itemContent']['tweet_results']['result']['tweet']['legacy']['full_text'])
+                    twitter_comments = row['content']['itemContent']['tweet_results']['result']['tweet']['legacy']['full_text']
                 else:
-                    logging.info(row['content']['itemContent']['tweet_results']['result']['legacy']['full_text'])
+                    twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
+                print(twitter_user, created_at, twitter_comments)
             except Exception as exc:
                 logging.warning(exc)
                 continue
