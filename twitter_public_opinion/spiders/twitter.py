@@ -39,7 +39,6 @@ class TwitterSpider(scrapy.Spider):
         """
         for user in twitter_list.user_dict:
             url = self.url.format(user_json=twitter_list.user_dict[user])
-            print(url)
             yield scrapy.FormRequest(url=url,
                                      method="get",
                                      headers=self.twitter_header,
