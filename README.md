@@ -9,6 +9,10 @@ twitter public opinion monitoring
 #### 打算搞个lark监控，时刻发到群里
 
 
+## 支持twitter_user
+#### twitter_list.py
+
+
 ## 项目框架
 #### scrapy，scrapyd，spider-admin-pro
 
