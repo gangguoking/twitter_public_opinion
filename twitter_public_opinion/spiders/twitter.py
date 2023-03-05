@@ -1,3 +1,5 @@
+import json
+
 import scrapy
 
 
@@ -40,7 +42,8 @@ class TwitterSpider(scrapy.Spider):
             # break
 
     def parse(self, response):
-        print(response.text)
+        json_data = json.loads(response.text)
+        print(json_data)
 
 
 # 直接调用scrapy，适合本地开发环境使用
