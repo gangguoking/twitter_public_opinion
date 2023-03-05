@@ -3,7 +3,7 @@ twitter public opinion monitoring
 
 
 ## 项目背景
-#### 上波ftx亏大了，得搞个twitter监控，时刻监控。
+#### 上波ftx亏大了，得搞个twitter舆论监控，时刻监控。
 #### https://twitter.com/
 #### 采集内容，twitter大佬发言，尤其是CZ
 
