@@ -10,6 +10,12 @@ import logging
 
 import requests
 
+from scrapy.utils import conf
+
+
+# lark_url
+LARKURL = conf.closest_scrapy_cfg()
+
 
 def send_lark(twitter_user, created_at, twitter_comments):
     """
@@ -19,7 +25,6 @@ def send_lark(twitter_user, created_at, twitter_comments):
     :param twitter_comments:
     :return:
     """
-    url = "https://open.larksuite.com/open-apis/bot/v2/hook/5f726ea8-69e6-45e5-b565-e1fd9d978308"
     headers = {
         'Content-Type': 'application/json'
     }
@@ -56,7 +61,7 @@ def send_lark(twitter_user, created_at, twitter_comments):
             ]
         }
     }
-    response = requests.post(url, headers=headers, data=json.dumps(card))
+    response = requests.post(LARKURL, headers=headers, data=json.dumps(card))
     logging.info(response.text)
 
 
