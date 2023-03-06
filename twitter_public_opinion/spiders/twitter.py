@@ -4,6 +4,7 @@ import logging
 import scrapy
 
 from twitter_public_opinion import twitter_list
+from twitter_public_opinion.lark import lark_robot_monitor
 
 
 class TwitterSpider(scrapy.Spider):
@@ -61,7 +62,9 @@ class TwitterSpider(scrapy.Spider):
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['tweet']['legacy']['full_text']
                 else:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
-                print(twitter_user, created_at, twitter_comments)
+                lark_robot_monitor.send_lark(twitter_user=twitter_user,
+                                             created_at=created_at,
+                                             twitter_comments=twitter_comments)
             except Exception as exc:
                 logging.warning(exc)
                 continue
