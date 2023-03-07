@@ -10,11 +10,11 @@ import logging
 
 import requests
 
-from scrapy.utils import conf
+from twitter_public_opinion.utils.config import get_config
 
 
 # lark_url
-LARKURL = conf.closest_scrapy_cfg()
+LARKURL = get_config("lark", "lark_url")
 
 
 def send_lark(twitter_user, created_at, twitter_comments):
@@ -66,4 +66,4 @@ def send_lark(twitter_user, created_at, twitter_comments):
 
 
 if __name__ == '__main__':
-    send_lark(twitter_user="cz_binance", created_at="2023-03-02", twitter_comments="btc fly!!!")
+    send_lark(twitter_user="@cz_binance", created_at="2023-03-02", twitter_comments="btc fly!!!")
