@@ -1,2 +1,6 @@
 /venv/
 /json/
+/build/
+/project.egg-info/
+/scrapyd/
+/spider-admin-pro/
