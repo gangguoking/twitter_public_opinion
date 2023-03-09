@@ -12,6 +12,7 @@ import scrapy
 
 from twitter_public_opinion import twitter_list
 from twitter_public_opinion.lark import lark_robot_monitor
+from twitter_public_opinion import settings
 
 
 class TwitterSpider(scrapy.Spider):
@@ -52,9 +53,9 @@ class TwitterSpider(scrapy.Spider):
                                      headers=self.twitter_header,
                                      dont_filter=True,
                                      meta={"twitter_user": user})
-            # break
 
     def parse(self, response):
+        twitter_id_set = settings.redis_tool.get_all(key=settings.TWITTER_REDIS_KEY)
         # twitter_user
         twitter_user = response.meta['twitter_user']
         logging.info(twitter_user)
@@ -64,9 +65,16 @@ class TwitterSpider(scrapy.Spider):
         # twitter comments
         for row in speech_list:
             try:
+                twitter_id = row['sortIndex']
+                if twitter_id in twitter_id_set:
+                    continue
+                settings.redis_tool.set(key=settings.TWITTER_REDIS_KEY,
+                                        field=twitter_id,
+                                        val=None)
                 created_at = row['content']['itemContent']['tweet_results']['result']['legacy']['created_at']
                 if 'tweet' in row['content']['itemContent']['tweet_results']['result']:
-                    twitter_comments = row['content']['itemContent']['tweet_results']['result']['tweet']['legacy']['full_text']
+                    twitter_comments = row['content']['itemContent']['tweet_results']['result']['tweet']['legacy'][
+                        'full_text']
                 else:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
                 lark_robot_monitor.send_lark(twitter_user=twitter_user,

@@ -4,8 +4,8 @@ Created on 2023/03/03 10:14
 
 @author: hao.hu
 """
-import time
 import redis
+import time
 
 
 class IndexTool(object):
