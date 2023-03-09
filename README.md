@@ -6,7 +6,7 @@ twitter public opinion monitoring
 #### 上波ftx亏大了，得搞个twitter舆论监控，时刻监控。
 #### https://twitter.com/
 #### 采集内容，twitter大佬发言，尤其是CZ
-#### 暂时未添加去重机制
+#### 使用redis set去重
 
 
 ## 支持twitter_user
