@@ -44,7 +44,9 @@ class TwitterSpider(scrapy.Spider):
         # twitter comments
         for row in speech_list:
             try:
-                source_twitter_user = row['content']['itemContent']['tweet_results']['result']['core']['user_results']['result']['legacy']['screen_name']
+                source_twitter_user = \
+                row['content']['itemContent']['tweet_results']['result']['core']['user_results']['result']['legacy'][
+                    'screen_name']
                 source_twitter_user = "@" + source_twitter_user
                 twitter_id = row['sortIndex']
                 if twitter_id in twitter_id_set:
@@ -58,9 +60,10 @@ class TwitterSpider(scrapy.Spider):
                         'full_text']
                 else:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
-                    lark_content = "user_link: https://twitter.com/{twitter_user}\n{twitter_comments}".format(
-                        twitter_user=twitter_user,
-                        twitter_comments=twitter_comments)
+
+                lark_content = "user_link: https://twitter.com/{twitter_user}\n\n\n{twitter_comments}".format(
+                    twitter_user=twitter_user,
+                    twitter_comments=twitter_comments)
 
                 # If it is original
                 if str(twitter_user) == source_twitter_user:
