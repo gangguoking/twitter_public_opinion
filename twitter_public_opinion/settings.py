@@ -7,10 +7,15 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+from twitter_public_opinion.utils.config import get_config
+
 BOT_NAME = "twitter_public_opinion"
 
 SPIDER_MODULES = ["twitter_public_opinion.spiders"]
 NEWSPIDER_MODULE = "twitter_public_opinion.spiders"
+
+# lark_url
+LARKURL = get_config("lark", "lark_url")
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

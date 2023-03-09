@@ -10,11 +10,7 @@ import logging
 
 import requests
 
-from twitter_public_opinion.utils.config import get_config
-
-
-# lark_url
-LARKURL = get_config("lark", "lark_url")
+from twitter_public_opinion.settings import LARKURL
 
 
 def send_lark(twitter_user, created_at, twitter_comments):
