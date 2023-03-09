@@ -63,7 +63,7 @@ class TwitterSpider(scrapy.Spider):
                                                  created_at=created_at,
                                                  twitter_comments=twitter_comments)
                 else:
-                    lark_twitter_user = "{twitter_user} retransfer @{source_twitter_user}".format(
+                    lark_twitter_user = "{twitter_user} retransfer {source_twitter_user}".format(
                         twitter_user=twitter_user, source_twitter_user=source_twitter_user)
                     lark_robot_monitor.send_lark(twitter_user=lark_twitter_user,
                                                  created_at=created_at,
