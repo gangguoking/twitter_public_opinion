@@ -56,9 +56,7 @@ class TwitterSpider(scrapy.Spider):
 
         # twitter comments
         for row in speech_list:
-            # created_at = row['content']['itemContent']['tweet_results']['result']['legacy']['created_at']
             try:
-
                 created_at = row['content']['itemContent']['tweet_results']['result']['legacy']['created_at']
                 if 'tweet' in row['content']['itemContent']['tweet_results']['result']:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['tweet']['legacy']['full_text']
