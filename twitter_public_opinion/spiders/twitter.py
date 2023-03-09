@@ -58,19 +58,22 @@ class TwitterSpider(scrapy.Spider):
                         'full_text']
                 else:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
+                    lark_content = "user_link: https://twitter.com/{twitter_user}\n{twitter_comments}".format(
+                        twitter_user=twitter_user,
+                        twitter_comments=twitter_comments)
 
                 # If it is original
                 if str(twitter_user) == source_twitter_user:
                     lark_robot_monitor.send_lark(twitter_user=twitter_user,
                                                  created_at=created_at,
-                                                 twitter_comments=twitter_comments)
+                                                 lark_content=lark_content)
                 # If it is retransfer
                 else:
                     lark_twitter_user = "{twitter_user} retransfer {source_twitter_user}".format(
                         twitter_user=twitter_user, source_twitter_user=source_twitter_user)
                     lark_robot_monitor.send_lark(twitter_user=lark_twitter_user,
                                                  created_at=created_at,
-                                                 twitter_comments=twitter_comments)
+                                                 lark_content=lark_content)
 
                 # setting log_message
                 log_message = "{twitter_user}\n {source_twitter_user}\n {created_at}\n {twitter_comments}\n".format(

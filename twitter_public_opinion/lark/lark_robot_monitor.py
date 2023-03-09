@@ -13,12 +13,12 @@ import requests
 from twitter_public_opinion.settings import LARKURL
 
 
-def send_lark(twitter_user, created_at, twitter_comments):
+def send_lark(twitter_user, created_at, lark_content):
     """
 
     :param twitter_user:
     :param created_at:
-    :param twitter_comments:
+    :param lark_content:
     :return:
     """
     headers = {
@@ -47,7 +47,7 @@ def send_lark(twitter_user, created_at, twitter_comments):
                     "tag": "div",
                     "text": {
                         "tag": "lark_md",
-                        "content": twitter_comments
+                        "content": lark_content
                     }
                 },
                 #
