@@ -62,10 +62,27 @@ COOKIES_ENABLED = False
 # TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-#    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-#    "Accept-Language": "en",
-# }
+DEFAULT_REQUEST_HEADERS = {
+        'authority': 'api.twitter.com',
+        'accept': '*/*',
+        'accept-language': 'en,zh-CN;q=0.9,zh;q=0.8',
+        'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+        'content-type': 'application/json',
+        'cookie': 'kdt=HEbiZg3taUjnw3DI579KYxKt55DVIYegXnTuluQR; guest_id=v1%3A167315514058656582; auth_token=904485ed7c8003132e03807aad9f8896495fdff0; ct0=c9af3604057e3b1131cd12884730e38b92bd4559dd2dde623fd61f6810a809cdec31ab2c7dbfcf62da5ebdabe4370c80c372043483c5f08ce90349e70855641b0c186041d9d412707a98134612fae5b0; twid=u%3D1519303115178004482; _ga_BYKEBDM7DS=GS1.1.1676798152.1.1.1676798523.0.0.0; _ga_ZJQNEMXF73=GS1.1.1676798523.2.0.1676798523.0.0.0; des_opt_in=Y; _gcl_au=1.1.1296960259.1676798827; mbox=PC#096b3483342548d089910069e1420199.38_0#1740195702|session#c7fbf217572946868015a50615f70b8f#1676952762; _ga_34PHSZMC42=GS1.1.1676950218.9.1.1676950904.0.0.0; _ga=GA1.2.291429187.1673073700; guest_id_marketing=v1%3A167315514058656582; guest_id_ads=v1%3A167315514058656582; _gid=GA1.2.1507049117.1678014999; personalization_id="v1_zmyEea/Lr6EkPfDDMhbGbw=="',
+        'origin': 'https://twitter.com',
+        'referer': 'https://twitter.com/',
+        'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"macOS"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+        'x-csrf-token': 'c9af3604057e3b1131cd12884730e38b92bd4559dd2dde623fd61f6810a809cdec31ab2c7dbfcf62da5ebdabe4370c80c372043483c5f08ce90349e70855641b0c186041d9d412707a98134612fae5b0',
+        'x-twitter-active-user': 'yes',
+        'x-twitter-auth-type': 'OAuth2Session',
+        'x-twitter-client-language': 'en',
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
