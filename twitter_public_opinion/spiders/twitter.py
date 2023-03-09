@@ -36,13 +36,16 @@ class TwitterSpider(scrapy.Spider):
     def parse(self, response):
         twitter_id_set = settings.redis_tool.get_all(key=settings.TWITTER_REDIS_KEY)
         # twitter_user
+        twitter_user = response.meta['twitter_user']
+
         json_data = json.loads(response.text)
         speech_list = json_data['data']['user']['result']['timeline_v2']['timeline']['instructions'][1]['entries']
 
         # twitter comments
         for row in speech_list:
             try:
-                twitter_user = row['content']['itemContent']['tweet_results']['result']['core']['user_results']['result']['legacy']['screen_name']
+                source_twitter_user = row['content']['itemContent']['tweet_results']['result']['core']['user_results']['result']['legacy']['screen_name']
+                source_twitter_user = "@" + source_twitter_user
                 twitter_id = row['sortIndex']
                 if twitter_id in twitter_id_set:
                     continue
@@ -55,10 +58,23 @@ class TwitterSpider(scrapy.Spider):
                         'full_text']
                 else:
                     twitter_comments = row['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
-                lark_robot_monitor.send_lark(twitter_user=twitter_user,
-                                             created_at=created_at,
-                                             twitter_comments=twitter_comments)
-                logging.info(twitter_user, twitter_id)
+                if str(twitter_user) == source_twitter_user:
+                    lark_robot_monitor.send_lark(twitter_user=twitter_user,
+                                                 created_at=created_at,
+                                                 twitter_comments=twitter_comments)
+                else:
+                    lark_twitter_user = "{twitter_user} retransfer @{source_twitter_user}".format(
+                        twitter_user=twitter_user, source_twitter_user=source_twitter_user)
+                    lark_robot_monitor.send_lark(twitter_user=lark_twitter_user,
+                                                 created_at=created_at,
+                                                 twitter_comments=twitter_comments)
+                log_message = "{twitter_user}\n {source_twitter_user}\n {created_at}\n {twitter_comments}\n".format(
+                    twitter_user=twitter_user,
+                    source_twitter_user=source_twitter_user,
+                    created_at=created_at,
+                    twitter_comments=twitter_comments
+                )
+                logging.info(log_message)
             except Exception as exc:
                 logging.warning(exc)
                 continue
