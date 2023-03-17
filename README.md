@@ -13,7 +13,7 @@ twitter public opinion monitoring
 #### twitter_list.py
 
 
-## 项目框架
+## 项目框架(接下来会支持分布式)
 #### scrapy，scrapyd，spider-admin-pro
 
 
