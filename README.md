@@ -20,6 +20,6 @@ twitter public opinion monitoring
 ## lark配置，redis配置
 scrapy.cfg
 
-## 币圈资深玩家：hao.hu，找币圈工作中，有好岗位请随时联系我
+## 币圈资深玩家：gangguo，找币圈工作中，有好岗位请随时联系我
 #### telegram：@gangguoking
 #### twitter：@LPvDMmGHM3aNN46
