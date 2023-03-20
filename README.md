@@ -21,5 +21,5 @@ twitter public opinion monitoring
 scrapy.cfg
 
 ## 币圈资深玩家：hao.hu，找币圈工作中，有好岗位请随时联系我
-#### 微信：13053282925
+#### telegram：@gangguoking
 #### twitter：@LPvDMmGHM3aNN46
