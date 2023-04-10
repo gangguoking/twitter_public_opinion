@@ -5,7 +5,9 @@
 /scrapyd/
 /spider-admin-pro/
 /setup.py
+.idea
 *.pyc
 *.xml
 .idea/dictionaries
 .idea/twitter_public_opinion.iml
+twitter_public_opinion/server/
